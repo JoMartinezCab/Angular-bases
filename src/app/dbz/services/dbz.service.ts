@@ -6,7 +6,7 @@ import { Character } from '../interfaces/character.interface';
 export class DbzService {
   public characters:Character[] = [];
 
-  newCharacter(character: Character):void{
+  addNewCharacter(character: Character):void{
     const newCharacter: Character = { id: uuid(), ...character };
     this.characters.unshift(newCharacter);
   }
