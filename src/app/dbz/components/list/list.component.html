@@ -1,9 +1,27 @@
 <h4>Characters</h4>
-<ul class="list-group">
-  <li
-    *ngFor="let character of characterList; let i = index"
-    class="list-group-item">
-    <span class="text-primary-emphasis">{{ i + 1 }}.</span>
-    <span>{{ character.name }} - power: {{ character.power }}</span>
+<ul class="list-group" *ngIf="characterList.length > 0; else empty_characters">
+  <li *ngFor="
+    let character of characterList;
+    let i = index;
+    let isFirst = first;
+    let isLast = last;
+    let isEven = even;
+    let isOdd = odd;
+    trackBy: characterTrackBy;
+    "
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{'list-group-item-primary': isEven}">
+    <div>
+      <span class="text-primary-emphasis">{{ i + 1 }}. </span>
+      <span>{{ character.name }} - power: {{ character.power }}</span>
+    </div>
+
+    <button class="btn btn-danger" (click)="emitDeleteCharacter(i)">X</button>
   </li>
 </ul>
+
+<ng-template #empty_characters>
+  <div class="alert alert-warning">
+    <span>Aun no se han agregado personajes</span>
+  </div>
+</ng-template>

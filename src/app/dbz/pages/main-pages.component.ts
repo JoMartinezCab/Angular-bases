@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 
 export class MainPagesComponent {
   public characters:Character[] = [];
+
+  newCharacter(Character: Character):void{
+    this.characters.unshift(Character);
+  }
+
+  removeCharacter(index:number):void{
+    this.characters.splice(index, 1);
+  }
 }
