@@ -11,13 +11,13 @@ export class ListComponent {
   public characterList: Character[] = [];
 
   @Output()
-  public onDeleteCharacter:EventEmitter<number> = new EventEmitter;
+  public onDeleteCharacter:EventEmitter<string> = new EventEmitter;
 
   characterTrackBy(index: any, characterList: Character){
-    return characterList ? characterList.name : undefined;
+    return characterList ? characterList.id : undefined;
   }
 
-  emitDeleteCharacter(index:number):void {
-    this.onDeleteCharacter.emit(index);
+  emitDeleteCharacter(id:string):void {
+    this.onDeleteCharacter.emit(id);
   }
 }
